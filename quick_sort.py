@@ -1,17 +1,15 @@
 # coding: utf-8
 
-def quick_sort(number_list, left, right):
+def quick_sort(buff, left, right):
     e = buff[(left + right) // 2]
     l = left
     r = right
 
-    while True:
-        while e > buff[l]:
-            l += 1
-        while buff[r] > e:
-            r -= 1
-        if l >= r:
-            break
+    while r >= l:
+        while e > buff[l]: l += 1
+        while buff[r] > e: r -= 1
+
+        if l >= r: break
 
         t = buff[r]
         buff[r] = buff[l]
