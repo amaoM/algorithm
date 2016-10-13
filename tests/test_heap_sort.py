@@ -31,11 +31,11 @@ class TestHeapSort(unittest.TestCase):
         ]
         self.assertEqual(heap_sort.heap_sort(lst), sorted(lst))
 
-    def test_heap_sort_4(self):
+    def test_heap_sort_5(self):
         lst = create_random_int_list(500, 1000)
         self.assertEqual(heap_sort.heap_sort(lst), sorted(lst))
 
-    def test_heap_sort_5(self):
+    def test_heap_sort_6(self):
         lst = create_random_int_list(1000, 10)
         self.assertEqual(heap_sort.heap_sort(lst), sorted(lst))
 
