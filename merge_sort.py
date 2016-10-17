@@ -1,20 +1,20 @@
 # coding: utf-8
 
 def merge_sort(buff):
-    if 2 >= len(buff):
+    c = len(buff)
+
+    if c == 1: return buff
+
+    if c == 2:
         if buff[1] >= buff[0]:
             return [buff[0], buff[1]]
         else:
             return [buff[1], buff[0]]
 
-    c = len(buff) // 2
+    hc = c // 2
 
-    if c == 1:
-        alst = buff[:c]
-    else:
-        alst = merge_sort(buff[:c])
-
-    blst = merge_sort(buff[c:])
+    alst = merge_sort(buff[:hc])
+    blst = merge_sort(buff[hc:])
 
     reslst = []
 
