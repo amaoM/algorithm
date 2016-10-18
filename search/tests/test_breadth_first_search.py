@@ -1,12 +1,12 @@
 # coding: utf-8
 
 import unittest
-import depth_first_search
+import breadth_first_search
 import random
 
-class TestDepthFirstSearch(unittest.TestCase):
+class TestBreadthFirstSearch(unittest.TestCase):
 
-    def test_depth_first_search_1(self):
+    def test_breadth_first_search_1(self):
         graph = [
             #s, 1, 2, 3, 4, 5, 6, 7, 8, 9, t
             [0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0], #s
@@ -21,11 +21,11 @@ class TestDepthFirstSearch(unittest.TestCase):
             [0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1], #9
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0]  #t
         ]
-        exp = ([
+        exp = [
             [0, 6, 5, 9, 10],
             [0, 6, 7, 9, 10],
             [0, 8, 7, 9, 10]
-        ], 5)
+        ]
         start = 0
         goal = 10
-        self.assertEqual(depth_first_search.depth_first_search(graph, start, goal, 0, [start], [], goal), exp)
+        self.assertEqual(breadth_first_search.breadth_first_search(graph, start, goal), exp)
