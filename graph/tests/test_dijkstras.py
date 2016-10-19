@@ -1,12 +1,12 @@
 # coding: utf-8
 
 import unittest
-import dijkstras_algorithm
+import dijkstras
 import random
 
-class TestDijkstrasAlgorithm(unittest.TestCase):
+class TestDijkstras(unittest.TestCase):
 
-    def test_dijkstras_algorithm_1(self):
+    def test_dijkstras_1(self):
         graph = [
             #s,   1, 2,  3,  4, t
             [0,   6, 8, 18,  0, 0], #s
@@ -19,9 +19,9 @@ class TestDijkstrasAlgorithm(unittest.TestCase):
         exp = [0, 2, 5]
         start = 0
         goal = 5
-        self.assertEqual(dijkstras_algorithm.dijkstras_algorithm(graph, start, goal), exp)
+        self.assertEqual(dijkstras.dijkstras(graph, start, goal), exp)
 
-    def test_dijkstras_algorithm_2(self):
+    def test_dijkstras_2(self):
         graph = [
             #s, 1, 2, 3, 4, t
             [0, 5, 4, 2, 0, 0], #s
@@ -34,4 +34,4 @@ class TestDijkstrasAlgorithm(unittest.TestCase):
         exp = [0, 2, 4, 5]
         start = 0
         goal = 5
-        self.assertEqual(dijkstras_algorithm.dijkstras_algorithm(graph, start, goal), exp)
+        self.assertEqual(dijkstras.dijkstras(graph, start, goal), exp)

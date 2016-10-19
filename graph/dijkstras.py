@@ -1,7 +1,8 @@
 # coding: utf-8
 
-def dijkstras_algorithm(graph, start, goal):
-    cost = [100 for _ in range(len(graph))]
+def dijkstras(graph, start, goal):
+    max_cost = 100
+    cost = [max_cost for _ in range(len(graph))]
     prev = [None for _ in range(len(graph))]
     visited = [False for _ in range(len(graph))]
 
@@ -9,7 +10,7 @@ def dijkstras_algorithm(graph, start, goal):
     prev[start] = start
     node = start
     while True:
-        min_cost = 100
+        min_cost = max_cost
         visited[node] = True
         next_node = -1
         for i in range(len(graph)):
