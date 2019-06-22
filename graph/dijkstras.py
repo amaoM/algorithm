@@ -1,34 +1,54 @@
-# coding: utf-8
+'''
+input example:
+20 7
+0 1 2
+0 2 5
+1 2 4
+1 3 6
+1 4 10
+2 3 2
+3 5 1
+4 5 3
+4 6 5
+5 6 9
+1 0 2
+2 0 5
+2 1 4
+3 1 6
+4 1 10
+3 2 2
+5 3 1
+5 4 3
+6 4 5
+6 5 9
+'''
 
-def dijkstras(graph, start, goal):
-    max_cost = 100
-    cost = [max_cost for _ in range(len(graph))]
-    prev = [None for _ in range(len(graph))]
-    visited = [False for _ in range(len(graph))]
+N, M = map(int, input().split())
+G = [list(map(int, input().split())) for _ in range(N)]
 
-    cost[start] = 0
-    prev[start] = start
-    node = start
+
+def dijkstras(start, goal):
+    cost = [[float('INF')] * M for _ in range(M)]
+    for i, j, c in G:
+        cost[i][j] = c
+    v = [False] * M
+    d = [float('INF')] * M
+    d[start] = 0
+
     while True:
-        min_cost = max_cost
-        visited[node] = True
-        next_node = -1
-        for i in range(len(graph)):
-            if visited[i] == True: continue
-            if graph[node][i]:
-                d = cost[node] + graph[node][i]
-                if cost[i] > d:
-                    cost[i] = d
-                    prev[i] = node
-            if min_cost > cost[i]:
-                min_cost = cost[i]
-                next_node = i
-        node = next_node
-        if next_node == -1: break
+        k = -1
+        for i in range(M):
+            if v[i] is True:
+                continue
+            if k > -1 and d[i] >= d[k]:
+                continue
+            k = i
+        if k == -1:
+            break
+        v[k] = True
+        for i in range(M):
+            if d[i] > d[k] + cost[k][i]:
+                d[i] = d[k] + cost[k][i]
 
-    path = [goal]
-    while goal > start:
-        goal = prev[goal]
-        path.append(goal)
 
-    return sorted(path)
+dijkstras(0, M - 1)
